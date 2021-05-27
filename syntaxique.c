@@ -51,9 +51,7 @@ void displayCode(codeToken code){
 static void erreur(codeToken code){
     printf("erreur sur : ");
     displayCode(code);
-    printf("C'EST NON !\n");
-    fclose(source);
-    exit(EXIT_FAILURE);
+    tokenCourant.code = ERREURLEX;
 }
 
 static void Accepter(codeToken code){
@@ -96,9 +94,6 @@ void inst(){
 static void suiteInst(){
     switch(tokenCourant.code){
         case ID :
-            inst();
-            suiteInst();
-            break;
         case PRINT :
             atome();
             resteExpr();

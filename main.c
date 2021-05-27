@@ -10,6 +10,9 @@ int main(int argc, char const *argv[]){
     if(exit_status != EXIT_FAILURE){
         printf("YOUPI LA CULCULETTE\n");
     }
+    else{
+        printf("C'EST NON !\n");
+    }
     fclose(source);
     return 0;
 }
