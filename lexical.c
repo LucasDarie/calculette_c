@@ -55,6 +55,7 @@ Token nextToken(FILE *source) {
 				leToken.lexeme = (char *)malloc(2);
 				strcpy(leToken.lexeme, ";");
 				fini = 1;
+				break;
 
 			default:
 				if ((c > '0') && (c <= '9')) {
@@ -121,8 +122,7 @@ Token nextToken(FILE *source) {
 			break;
 
 		case 3: /* cas du :=*/
-			if (c == '=')
-			{
+			if (c == '='){
 				leToken.code = AFFECT;
 				leToken.lexeme = (char *)malloc(3);
 				strcpy(leToken.lexeme, ":=");

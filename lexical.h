@@ -1,5 +1,4 @@
 #include<stdio.h>
-typedef enum CodToken codeToken;
 enum CodToken{
 	AFFECT,
 	PRINT,
@@ -13,10 +12,11 @@ enum CodToken{
 	FIN,
 	ERREURLEX
 };
+typedef enum CodToken codeToken;
 
 struct t_Token{
 	codeToken code;
-	char* lexem;
+	char* lexeme;
 };
 typedef struct t_Token Token;
 Token nextToken(FILE *source);

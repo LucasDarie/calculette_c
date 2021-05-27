@@ -6,8 +6,51 @@ static void expr(void);
 static void atome(void);
 static void resteExpr(void);
 
+void displayCode(codeToken code){
+    switch (code)
+    {
+    case AFFECT :
+        printf("AFFECT\n");
+        break;
+	case PRINT :
+	    printf("PRINT\n");
+        break;
+	case PTVIRG :
+	    printf("PTVIRG\n");
+        break;
+	case PLUS :
+	    printf("PLUS\n");
+        break;
+	case MOINS :
+	    printf("MOINS\n");
+        break;
+	case PARGAUCHE :
+	    printf("PARGAUCHE\n");
+        break;
+	case PARDROITE :
+	    printf("PARDROITE\n");
+        break;
+ 	case ID :
+ 	    printf("ID\n");
+         break;
+	case NB :
+	    printf("NB\n");
+        break;
+	case FIN :
+	    printf("FIN\n");
+        break;
+	case ERREURLEX :
+	    printf("ERREURLEX\n");
+        break;
+    default:
+        printf("default\n");
+        break;
+    }
+}
+
 static void erreur(codeToken code){
-    printf("erreur sur : %d", code);
+    printf("erreur sur : ");
+    displayCode(code);
     /*switch (code){
     case :
         break;
@@ -20,14 +63,20 @@ static void erreur(codeToken code){
 }
 
 static void Accepter(codeToken code){
-    if(tokenCourant.code == code)
+    if(tokenCourant.code == code){
+        printf("accepté : ");
+        displayCode(tokenCourant.code);
         tokenCourant = nextToken(source);
+        printf("newCode =");
+        displayCode(tokenCourant.code);
+    }
     else{
         erreur(code);
     }
 }
 
 int prog(void){
+    displayCode(tokenCourant.code);
     inst();
     suiteInst();
     if(tokenCourant.code == FIN) return EXIT_SUCCESS;

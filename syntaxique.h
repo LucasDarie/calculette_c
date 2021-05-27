@@ -1,4 +1,4 @@
-#include "lexical.h"
+#include "lexical.c"
 
 #include <stdio.h>
 #include <stdlib.h>
