@@ -51,6 +51,8 @@ void displayCode(codeToken code){
 static void erreur(codeToken code){
     printf("erreur sur : ");
     displayCode(code);
+    printf("C'EST NON !\n");
+    fclose(source);
     exit(EXIT_FAILURE);
 }
 
@@ -59,8 +61,6 @@ static void Accepter(codeToken code){
         printf("accepté : ");
         displayCode(tokenCourant.code);
         tokenCourant = nextToken(source);
-        printf("newCode =");
-        displayCode(tokenCourant.code);
     }
     else{
         erreur(code);
