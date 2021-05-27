@@ -51,15 +51,7 @@ void displayCode(codeToken code){
 static void erreur(codeToken code){
     printf("erreur sur : ");
     displayCode(code);
-    /*switch (code){
-    case :
-        break;
-    
-    default:
-        break;
-    }
-    affiche un message precisant l'erreur
-    */
+    exit(EXIT_FAILURE);
 }
 
 static void Accepter(codeToken code){
@@ -102,15 +94,39 @@ void inst(){
 }
 
 static void suiteInst(){
-    if(tokenCourant.code == ID || tokenCourant.code == PRINT){
-        inst();
-        suiteInst();
+    switch(tokenCourant.code){
+        case ID :
+            inst();
+            suiteInst();
+            break;
+        case PRINT :
+            atome();
+            resteExpr();
+            break;
+        case FIN :
+            break;
+        default:
+            erreur(tokenCourant.code);
     }
 }
 
 static void expr(void){
-    atome();
-    resteExpr();
+    switch(tokenCourant.code){
+        case ID :
+            atome();
+            resteExpr();
+            break;
+        case NB :
+            atome();
+            resteExpr();
+            break;
+        case PARGAUCHE :
+            atome();
+            resteExpr();
+            break;
+        default:
+            erreur(tokenCourant.code);
+    }
 }
 
 static void atome(void){
